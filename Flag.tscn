@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/_greek-flag-animation.png" type="Texture" id=1]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 32, 64 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 32, 64 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 15.0277, 26.3448 )
+
+[node name="Flag" type="KinematicBody2D" groups=[
+"flag",
+]]
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
+[node name="Mask" type="CollisionShape2D" parent="."]
+position = Vector2( -2.66968, 5.50621 )
+shape = SubResource( 6 )
+
+[node name="Area2D" type="Area2D" parent="." groups=[
+"flag",
+]]
+position = Vector2( 2.82842, -5.65686 )
+
+[node name="Mask" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( -5.33936, 11.0124 )
+shape = SubResource( 6 )
